@@ -1,0 +1,50 @@
+DROP SCHEMA IF EXISTS customer_and_sales;
+
+CREATE DATABASE customer_and_sales;
+
+USE customer_and_sales;
+
+CREATE TABLE users (
+     id INT AUTO_INCREMENT PRIMARY KEY, 
+     email VARCHAR(255) NOT NULL, 
+     password VARCHAR(255) NOT NULL );
+
+CREATE TABLE customers ( 
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    name VARCHAR(255) NOT NULL, 
+    cpf VARCHAR(14) NOT NULL );
+
+CREATE TABLE address ( 
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    customer_id INT, 
+    street VARCHAR(255), 
+    number VARCHAR(10), 
+    neighborhood VARCHAR(255), 
+    city VARCHAR(255), 
+    state VARCHAR(2), 
+    postal_code VARCHAR(9), 
+    FOREIGN KEY (customer_id) REFERENCES customers(id) );
+
+CREATE TABLE phones ( 
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    customer_id INT,
+    phone_number VARCHAR(15), 
+    FOREIGN KEY (customer_id) REFERENCES customers(id) );
+
+CREATE TABLE products ( 
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    name VARCHAR(255) NOT NULL, 
+    price DECIMAL(10, 2) NOT NULL, 
+    color VARCHAR(50), 
+    brand VARCHAR(50), 
+    size VARCHAR(10), type VARCHAR(50) );
+
+CREATE TABLE sales ( 
+    id INT AUTO_INCREMENT PRIMARY KEY, 
+    customer_id INT, product_id INT, 
+    quantity INT NOT NULL, 
+    unit_price DECIMAL(10, 2) NOT NULL, 
+    total_price DECIMAL(10, 2) NOT NULL, 
+    date_time DATETIME NOT NULL, 
+    FOREIGN KEY (customer_id) REFERENCES customers(id), 
+    FOREIGN KEY (product_id) REFERENCES products(id) );
