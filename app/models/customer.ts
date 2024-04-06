@@ -28,7 +28,24 @@ export default class Customer extends BaseModel {
   @hasMany(() => Sale)
   declare sale: HasMany<typeof Sale>
 
-  
+  public static async createWithTransaction(customerData: CustomerData, addressData: AddressData, phoneData: PhoneData) {
+    return await db.transaction(async (trx) => {
+      try {
+        const customer = await Customer.create(customerData, { client: trx })
+
+        if (!addressData.customerId) addressData.customerId = customer.id
+        if (!phoneData.customerId) phoneData.customerId = customer.id
+
+        await customer.related('phones').create(phoneData)
+        await customer.related('address').create(addressData)
+
+        return customer
+      } catch (error) {
+        await trx.rollback()
+        throw error
+      }
+    })
+  }
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
