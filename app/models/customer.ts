@@ -56,6 +56,29 @@ export default class Customer extends BaseModel {
       .orderBy('customers.id', 'asc');
 
   }
+  public static async updateWithTransaction(customerData: CustomerDataUpdate, addressData: AddressData, phoneData: PhoneData) {
+    return await db.transaction(async (trx) => {
+      try {
+        const customer = await Customer.find(customerData.id, { client: trx })
+        if (!customer) throw new Error('Customer not found')
+
+        customer.merge(customerData)
+
+        const address = await customer.related('address').query().first()
+        if (address) address.merge(addressData)
+
+        const phone = await customer.related('phones').query().first()
+        if (phone) phone.merge(phoneData)
+
+        await Promise.all([customer.save(), address?.save(), phone?.save()])
+
+        return customer
+      } catch (error) {
+        await trx.rollback()
+        throw error
+      }
+    })
+  }
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
