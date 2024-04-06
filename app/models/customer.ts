@@ -4,7 +4,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import db from '@adonisjs/lucid/services/db'
 import type { HasMany } from '@adonisjs/lucid/types/relations';
-import type { CustomerDataUpdate, CustomerData, AddressData, PhoneData } from '../interfaces/Customer/InterfaceCustomer.ts'
+import type { CustomerDataUpdate, CustomerData, AddressData, PhoneData } from '../interfaces/Customer/InterfaceCustomer.js'
 import Sale from '#models/sale'
 
 
@@ -45,6 +45,16 @@ export default class Customer extends BaseModel {
         throw error
       }
     })
+  }
+
+  public static async getListCustomers() {
+    return await db
+      .from('customers')
+      .join('phones', 'customers.id', '=', 'phones.customer_id')
+      .select('customers.id', 'customers.name', 'customers.cpf')
+      .select('phones.phone_number')
+      .orderBy('customers.id', 'asc');
+
   }
 
   @column.dateTime({ autoCreate: true })
