@@ -1,6 +1,6 @@
 import router from '@adonisjs/core/services/router'
- //const CustomersController = () => import('#controllers/customers_controller')
- import CustomersController from '#controllers/customers_controller'
+ const CustomersController = () => import('#controllers/customers_controller')
+ //import CustomersController from '#controllers/customers_controller'
 
 const UsersController = () => import('#controllers/users_controller')
 const ProductsController = () => import('#controllers/products_controller')
@@ -22,23 +22,17 @@ router.group(() => {
 })
 router.get('/customers/:id/sales/:month?/:year?', [CustomersController, 'show'] )
 
-import User from '#models/user'
+//import User from '#models/user'
 //import router from '@adonisjs/core/services/router'
 // import { AuthMiddleware } from './kernel.js'
 import { middleware } from './kernel.js';
+import LoginController from '#controllers/login_controller'
 
 
 
 
 router.group(() =>{
-  router.post('login', async ({ request, auth }) => {
-    // const { email, password } = request.all()
-    const user = await User.create(request.all())
-    const user2 = await auth.use('jwt').generate(user)
-  
-  
-    return user2
-  })
+  router.post('login',[ LoginController, 'store'])
   
   router
     .get('/', async ({ auth }) => {
