@@ -33,7 +33,6 @@ export default class Product extends compose(BaseModel, SoftDeletes) {
   public static async getListProducts(){
     return  Product.query()
     .select('id', 'type', 'name', 'price').orderBy("type", "asc");
-
   }
 
   @column.dateTime({ autoCreate: true })
