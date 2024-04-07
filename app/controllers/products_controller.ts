@@ -34,7 +34,8 @@ export default class ProductsController {
     const { id } = params
     const product = await Product.findOrFail(id)
     await product.delete()
-    return response.status(204)
+    return response.status(200).send({message: "Product deleted successfully"})
+
 
   }
 }
