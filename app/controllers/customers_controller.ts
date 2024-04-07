@@ -5,22 +5,12 @@ import type { HttpContext } from '@adonisjs/core/http'
 
 
 export default class CustomersController {
-  /**
-   * Display a list of resource
-   */
+
   async index({ }: HttpContext) {
     const customers = await Customer.getListCustomers()
     return customers
   }
 
-  /**
-   * Display form to create a new record
-   */
-  async create({ }: HttpContext) { }
-
-  /**
-   * Handle form submission for the create action
-   */
   public async store({ request, response }: HttpContext) {
     const { name, cpf, street, number, neighborhood, city, state, postal_code, phone_number } = request.all();
 
@@ -29,9 +19,9 @@ export default class CustomersController {
       const addressData = { street, number, neighborhood, city, state, postal_code }
       const phoneData = { phone_number }
 
-      await Customer.createWithTransaction(customerData, addressData, phoneData)
+      const customer = await Customer.createWithTransaction(customerData, addressData, phoneData)
 
-      return response.status(201).json({ message: 'Customer successfully created' })
+      return response.status(201).json(customer)
     } catch (error) {
       return response.status(400).json({ error: error.message })
     }
@@ -60,9 +50,9 @@ export default class CustomersController {
     const { id } = params
     const customer = await Customer.findOrFail(id)
     // o EERO ESTA INDO pro eero geral
-    if(!customer) return response.status(400).json({message: 'Customer not found'})
+    if (!customer) return response.status(400).json({ message: 'Customer not found' })
     await customer.delete()
-    return response.status(204)
+ return response.status(200).json({message: "Customer deleted successfully"})
 
   }
 
