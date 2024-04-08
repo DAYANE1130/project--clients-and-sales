@@ -22,8 +22,7 @@ registrar clientes, produtos e vendas. As operações são realizadas em um banc
 
   ```bash
  node -v
-# v21.0.0
-
+ // v21.0.0
     ```
 
 ## Como Instalar e Rodar o Projeto
@@ -46,8 +45,10 @@ registrar clientes, produtos e vendas. As operações são realizadas em um banc
     DB_USER=seu-usuario
     DB_PASSWORD=sua-senha
     DB_DATABASE=nome-do-banco
+     
     ```
 Aqui está um exemplo de como configurar as variavéis de ambiente:     
+
     ```
     PORT=3333
     DB_CONNECTION=mysql
@@ -56,12 +57,16 @@ Aqui está um exemplo de como configurar as variavéis de ambiente:
     DB_USER=seu-usuario
     DB_PASSWORD=sua-senha
     DB_DATABASE=customer_and_sales
+    
     ```
+    
 5. Execute as migrações para criar a estrutura do banco de dados:
+   
     ```bash
     node ace migration:run
     ```
-6. Inicie o servidor:
+7. Inicie o servidor:
+   
     ```bash
     node ace serve --watch
     ```
