@@ -73,6 +73,57 @@ Aqui está um exemplo de como configurar as variavéis de ambiente:
 Agora o projeto está rodando e pronto para ser acessado em `http://localhost:3333`.
 
 
+# Autenticação
+
+Para autenticar um usuário na API, você precisa fazer uma solicitação POST para a rota `/login` com o seguinte corpo:
+
+```json
+{
+    "email": "rafael@gmail.com",
+    "password": "abd_123"
+}
+```
+Se a autenticação for bem-sucedida, a API retornará um token JWT no seguinte formato:
+
+```
+{
+    "type": "bearer",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc5LCJpYXQiOjE3MTI2MTQ1MTF9.SqXgJPZx-WSe0AFIppHOZNuOvbYZi6kNMiwHzn7rWmg"
+}
+```
+
+### Autorização
+
+* Para acessar as rotas protegidas da API (como as rotas de clientes, produtos e vendas), você precisará incluir o token JWT em suas solicitações. Aqui está como você pode fazer isso:
+
+* Na sua ferramenta de testes de API (como o Postman), localize a seção para adicionar cabeçalhos à sua solicitação.
+Adicione um novo cabeçalho com "Authorization" como a chave e "Bearer {token}" como o valor, onde {token} é o token que você recebeu da rota de login.
+
+* Por exemplo, para acessar a rota POST /sales para criar uma venda, você precisará fazer uma solicitação POST com o seguinte corpo:
+
+```
+{
+    "customer_id": 89,
+    "product_id": 8,
+    "quantity": 9,
+    "unit_price": 99.50
+}
+```
+E adicionar a seguinte cabeçalho à sua solicitação:
+
+* No campo "Key" selecionar "Authorization" 
+```
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc5LCJpYXQiOjE3MTI6MTQ1MTF9.SqXgJPZx-WSe0AFIppHOZNuOvbYZi6kNMiwHzn7rWmg
+```
+* No campo "Value" colocar o token conforme abaixo:
+  
+  ```
+     Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc5LCJpYXQiOjE3MTI6MTQ1MTF9.SqXgJPZx-WSe0AFIppHOZNuOvbYZi6kNMiwHzn7rWmg
+  ``` 
+* Lembre-se de substituir `{token}` pelo token real que você obteve do login.
+
+
+
 ## Rotas
 
 ### Usuários
@@ -107,3 +158,11 @@ Aqui você deve descrever como executar os testes.
 ## Documentação
 
 Aqui você deve inserir o link para a documentação da API no Postman.
+
+## Melhorias Futuras
+
+- Adicionar autenticação por meio de redes sociais como Facebook e Google.
+- Implementar testes de unidade e de integração para todas as rotas.
+- Refatorar o código para torná-lo mais eficiente e fácil de entender.
+- Adicionar uma funcionalidade de pesquisa para facilitar a localização de clientes e produtos assim podemos indentificar quais os produtos preferidos e futuramente  usar para fazer recomendações.
+- Melhorar a segurança dos dados do usuário.
