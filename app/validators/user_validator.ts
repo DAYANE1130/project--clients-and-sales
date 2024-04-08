@@ -7,6 +7,6 @@ export const createUserValidator = vine.compile(
       allowSpaces: false,
       allowUnderscores: true,
       allowDashes: true,
-    }).minLength(6).nullable(),
+    }).minLength(6).maxLength(32).nullable(),
   })
 )
