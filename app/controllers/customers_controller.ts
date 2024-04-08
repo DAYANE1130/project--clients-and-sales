@@ -3,7 +3,7 @@ import Customer from '#models/customer'
 import Sale from '#models/sale'
 import type { HttpContext } from '@adonisjs/core/http'
 import { createCustomerValidator, updateCustomerValidator } from '#validators/customer_validator'
-
+import CustomerAlredyExistException from '#exceptions/customer_alredy_exist_exception'
 
 export default class CustomersController {
 
@@ -12,21 +12,14 @@ export default class CustomersController {
     return customers
   }
 
-  public async store({ request, response }: HttpContext) {
+  public async store({ request }: HttpContext) {
     const { name, cpf, street, number, neighborhood, city, state, postal_code, phone_number } = request.all();
     await createCustomerValidator.validate(request.all())
-    try {
-      const customerData = { name, cpf }
-      const addressData = { street, number, neighborhood, city, state, postal_code }
-      const phoneData = { phone_number }
-
-      const customer = await Customer.createWithTransaction(customerData, addressData, phoneData)
-
-      return response.status(201).json(customer)
-    } catch (error) {
-      return response.status(400).json({ error: error.message })
-    }
-
+    const customerData = { name, cpf }
+    const addressData = { street, number, neighborhood, city, state, postal_code }
+    const phoneData = { phone_number }
+    const customer = await Customer.createWithTransaction(customerData, addressData, phoneData)
+    return customer
   }
 
   async show({ params }: HttpContext) {
@@ -40,23 +33,23 @@ export default class CustomersController {
     const { id } = params;
     const { name, cpf, street, number, neighborhood, city, state, postal_code, phone_number } = request.all();
     await updateCustomerValidator.validate(request.all())
+
+    const existingCustomer = await Customer.findBy('cpf', cpf)
+    if (existingCustomer && existingCustomer.id !== id) {
+      throw new CustomerAlredyExistException()
+    }
     const customerData = { id, name, cpf }
     const addressData = { street, number, neighborhood, city, state, postal_code }
     const phoneData = { phone_number }
-    const customer = await Customer.updateWithTransaction(customerData, addressData, phoneData)
-    if (!customer) return null
+
+    await Customer.updateWithTransaction(customerData, addressData, phoneData)
     return response.status(200).json({ message: 'Customer successfully updated' })
   }
 
   async destroy({ params, response }: HttpContext) {
     const { id } = params
     const customer = await Customer.findOrFail(id)
-    // o EERO ESTA INDO pro eero geral
-    if (!customer) return response.status(400).json({ message: 'Customer not found' })
     await customer.delete()
- return response.status(200).json({message: "Customer deleted successfully"})
-
+    return response.status(200).json({ message: "Customer deleted successfully" })
   }
-
-
 }

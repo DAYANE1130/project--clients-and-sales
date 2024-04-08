@@ -6,6 +6,8 @@ import db from '@adonisjs/lucid/services/db'
 import type { HasMany } from '@adonisjs/lucid/types/relations';
 import type { CustomerDataUpdate, CustomerData, AddressData, PhoneData } from '../interfaces/Customer/InterfaceCustomer.js'
 import Sale from '#models/sale'
+import FormatResponseCustomerData from '../utils/formatResponseCustomerData.js';
+import CustomerAlredyExistException from '#exceptions/customer_alredy_exist_exception'
 
 
 
@@ -36,13 +38,18 @@ export default class Customer extends BaseModel {
         if (!addressData.customerId) addressData.customerId = customer.id
         if (!phoneData.customerId) phoneData.customerId = customer.id
 
-        await customer.related('phones').create(phoneData)
-        await customer.related('address').create(addressData)
+        const phone = await customer.related('phones').create(phoneData)
+        const address = await customer.related('address').create(addressData)
 
-        return customer
+        await trx.commit()
+
+        const responseFormatedCustomer = FormatResponseCustomerData.formatResponseCustomer(customer, address, phone);
+
+        return responseFormatedCustomer
+
       } catch (error) {
         await trx.rollback()
-        throw error
+        throw new CustomerAlredyExistException()
       }
     })
   }
@@ -71,6 +78,8 @@ export default class Customer extends BaseModel {
         if (phone) phone.merge(phoneData)
 
         await Promise.all([customer.save(), address?.save(), phone?.save()])
+
+        await trx.commit()
 
         return customer
       } catch (error) {
