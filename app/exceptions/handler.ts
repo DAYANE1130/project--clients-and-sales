@@ -8,11 +8,12 @@ export default class HttpExceptionHandler extends ExceptionHandler {
    */
   protected debug = !app.inProduction
 
-  /**
-   * The method is used for handling errors and returning
-   * response to the client
-   */
-  async handle(error: unknown, ctx: HttpContext) {
+  public async handle(error: any, ctx: HttpContext) {
+
+    if (typeof error.handle === "function") {
+      return error.handle(ctx)
+    }
+
     return super.handle(error, ctx)
   }
 
