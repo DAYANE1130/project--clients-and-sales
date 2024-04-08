@@ -127,12 +127,12 @@ Authorization
 
 # Rotas
 
-### Usuários
+### Usuários (Não exigem envio de token)
 
-- POST `/signup`: Cadastro de usuário do sistema.
+- POST `/signup`: Cadastro de usuário do sistema. 
 - POST `/login`: Login com JWT de usuário cadastrado.
 
-### Clientes
+### Clientes (Todas a rotas exigem envio de token)
 
 - GET `/customers`: Listar todos os clientes cadastrados.
 - GET `/customers/:id`: Detalhar um cliente e vendas a ele.
@@ -140,7 +140,7 @@ Authorization
 - PUT `/customers/:id`: Editar um cliente.
 - DELETE `/customers/:id`: Excluir um cliente e vendas a ele.
 
-### Produtos
+### Produtos (Todas a rotas exigem envio de token)
 
 - GET `/products`: Listar todos os produtos cadastrados.
 - GET `/products/:id`: Detalhar um produto.
@@ -148,7 +148,7 @@ Authorization
 - PUT `/products/:id`: Editar um produto.
 - DELETE `/products/:id`: Exclusão lógica de um produto.
 
-### Vendas
+### Vendas (Exige envio de token)
 
 - POST `/sales`: Registrar venda de 1 produto a 1 cliente.
 
