@@ -7,10 +7,11 @@ Este projeto Bacbk-end é uma API RESTful desenvolvida com AdonisJS e Lucid ORM 
 registrar clientes, produtos e vendas. As operações são realizadas em um banco de dados MySQL.
 
 ## Tecnologias Utilizadas 
-* Adonis.js(Node.js) versão "^6.2.2"
-* MySQL
-* Lucid versão "^20.1.0" - ORM  para auxiliar na administração do banco de dados
-* JWT(JSON Web Token) - autenticação
+* Adonis.js(Node.js) versão "^6.2.2".
+* Linguagem utilzada Typescript.
+* MySQL - Banco de dados.
+* Lucid versão "^20.1.0" - ORM  para auxiliar na administração do banco de dados.
+* JWT(JSON Web Token) -  para autenticação e autorizar o acesso do usuário a rotas específicas.
 
 ## Informações relevantes  prévias à instalação
 
@@ -162,7 +163,6 @@ Aqui você deve inserir o link para a documentação da API no Postman.
 ## Melhorias Futuras
 
 - Adicionar autenticação por meio de redes sociais como Facebook e Google.
+- Incluir uma seção de "Estrutura do Projeto" descrevendo a organização dos arquivos e pastas no projeto, seguindo boas práticas de arquitetura de software.
 - Implementar testes de unidade e de integração para todas as rotas.
-- Refatorar o código para torná-lo mais eficiente e fácil de entender.
-- Adicionar uma funcionalidade de pesquisa para facilitar a localização de clientes e produtos assim podemos indentificar quais os produtos preferidos e futuramente  usar para fazer recomendações.
-- Melhorar a segurança dos dados do usuário.
+- Adicionar uma funcionalidade de pesquisa para facilitar a localização de clientes e produtos assim será possivel indentificar quais os produtos preferidos do cliente e futuramente  usar para fazer recomendações.
