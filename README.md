@@ -114,7 +114,7 @@ E adicionar a seguinte cabeçalho à sua solicitação:
 
 * No campo "Key" selecionar "Authorization" 
 ```
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc5LCJpYXQiOjE3MTI6MTQ1MTF9.SqXgJPZx-WSe0AFIppHOZNuOvbYZi6kNMiwHzn7rWmg
+Authorization
 ```
 * No campo "Value" colocar o token conforme abaixo:
   
