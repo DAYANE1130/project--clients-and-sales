@@ -125,7 +125,7 @@ Authorization
 
 
 
-## Rotas
+# Rotas
 
 ### Usuários
 
@@ -152,15 +152,13 @@ Authorization
 
 - POST `/sales`: Registrar venda de 1 produto a 1 cliente.
 
-## Testes
 
-Aqui você deve descrever como executar os testes.
 
-## Documentação
+# Documentação
 
 Aqui você deve inserir o link para a documentação da API no Postman.
 
-## Melhorias Futuras
+# Melhorias Futuras
 
 - Adicionar autenticação por meio de redes sociais como Facebook e Google.
 - Incluir uma seção de "Estrutura do Projeto" descrevendo a organização dos arquivos e pastas no projeto, seguindo boas práticas de arquitetura de software.
