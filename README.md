@@ -164,3 +164,4 @@ Aqui você deve inserir o link para a documentação da API no Postman.
 - Incluir uma seção de "Estrutura do Projeto" descrevendo a organização dos arquivos e pastas no projeto, seguindo boas práticas de arquitetura de software.
 - Implementar testes de unidade e de integração para todas as rotas.
 - Adicionar uma funcionalidade de pesquisa para facilitar a localização de clientes e produtos assim será possivel indentificar quais os produtos preferidos do cliente e futuramente  usar para fazer recomendações.
+- Monitorar regularmente o desempenho do banco de dados, identificar quaisquer consultas ou operações lentas e então fazer ajustes para melhorar o desempenho.
