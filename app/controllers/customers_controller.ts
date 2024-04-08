@@ -2,6 +2,7 @@
 import Customer from '#models/customer'
 import Sale from '#models/sale'
 import type { HttpContext } from '@adonisjs/core/http'
+import { createCustomerValidator, updateCustomerValidator } from '#validators/customer_validator'
 
 
 export default class CustomersController {
@@ -13,7 +14,7 @@ export default class CustomersController {
 
   public async store({ request, response }: HttpContext) {
     const { name, cpf, street, number, neighborhood, city, state, postal_code, phone_number } = request.all();
-
+    await createCustomerValidator.validate(request.all())
     try {
       const customerData = { name, cpf }
       const addressData = { street, number, neighborhood, city, state, postal_code }
@@ -38,6 +39,7 @@ export default class CustomersController {
   async update({ params, request, response }: HttpContext) {
     const { id } = params;
     const { name, cpf, street, number, neighborhood, city, state, postal_code, phone_number } = request.all();
+    await updateCustomerValidator.validate(request.all())
     const customerData = { id, name, cpf }
     const addressData = { street, number, neighborhood, city, state, postal_code }
     const phoneData = { phone_number }
