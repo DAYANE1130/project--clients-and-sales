@@ -18,7 +18,7 @@ registrar clientes, produtos e vendas. As operações são realizadas em um banc
 
 * Você pode instalar o Node.js usando os instaladores oficiais ou Volta . Volta é um gerenciador de pacotes multiplataforma que instala e executa várias versões do Node.js em seu computador.
 
-* Verifique a versão do Node.js.Copie o código para a área de transferência , basta inserir esse comando no seu terminal e apertar a tecla enter, a saída será similar a do exemplo (//v21.0.0) abaixo indicando qual a versão atual do node caso ele exista.
+* Verifique a versão do Node.js.Copie o código para a área de transferência , basta inserir esse comando no seu terminal e apertar a tecla enter, a saída será similar a do exemplo abaixo (//v21.0.0), indicando qual a versão atual do node caso ele exista.
 
     ```bash
       node -v
