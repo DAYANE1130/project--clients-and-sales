@@ -20,11 +20,9 @@ registrar clientes, produtos e vendas. As operações são realizadas em um banc
 
 * Verifique a versão do Node.js.Copie o código para a área de transferência , basta inserir esse comando no seu terminal e apertar a tecla enter, a saída será similar a do exemplo abaixo indicando qual versão atual do node caso ele exista.
 
-  ```bash
-  
- node -v
- //v21.0.0
- 
+    ```bash
+      node -v
+      //v21.0.0
     ```
 
 ## Como Instalar e Rodar o Projeto
