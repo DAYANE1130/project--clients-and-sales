@@ -7,10 +7,10 @@ Este projeto Bacbk-end é uma API RESTful desenvolvida com AdonisJS e Lucid ORM 
 registrar clientes, produtos e vendas. As operações são realizadas em um banco de dados MySQL.
 
 ## Tecnologias Utilizadas 
-Adonis.js(Node.js) versão "^6.2.2"
-MySQL
-Lucid versão "^20.1.0" - ORM  para auxiliar na administração do banco de dados
-JWT(JSON Web Token) - autenticação
+* Adonis.js(Node.js) versão "^6.2.2"
+* MySQL
+* Lucid versão "^20.1.0" - ORM  para auxiliar na administração do banco de dados
+* JWT(JSON Web Token) - autenticação
 
 ## Como Instalar e Rodar o Projeto
 
@@ -24,7 +24,8 @@ JWT(JSON Web Token) - autenticação
     npm install
     ```
 3. Configure o arquivo .env com as informações do banco de dados MySQL:
-    ```
+
+     ```
     DB_CONNECTION=mysql
     DB_HOST=seu-host
     DB_PORT=sua-porta
@@ -32,11 +33,21 @@ JWT(JSON Web Token) - autenticação
     DB_PASSWORD=sua-senha
     DB_DATABASE=nome-do-banco
     ```
-4. Execute as migrações para criar a estrutura do banco de dados:
+Aqui está um exemplo de como configurar as variavéis de ambiente:     
+    ```
+    PORT=3333
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_USER=seu-usuario
+    DB_PASSWORD=sua-senha
+    DB_DATABASE=customer_and_sales
+    ```
+5. Execute as migrações para criar a estrutura do banco de dados:
     ```bash
     node ace migration:run
     ```
-5. Inicie o servidor:
+6. Inicie o servidor:
     ```bash
     node ace serve --watch
     ```
