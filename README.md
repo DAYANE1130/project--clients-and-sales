@@ -119,7 +119,7 @@ Authorization
 * No campo "Value" colocar o token conforme abaixo:
   
   ```
-     Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc5LCJpYXQiOjE3MTI6MTQ1MTF9.SqXgJPZx-WSe0AFIppHOZNuOvbYZi6kNMiwHzn7rWmg
+  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc5LCJpYXQiOjE3MTI6MTQ1MTF9.SqXgJPZx-WSe0AFIppHOZNuOvbYZi6kNMiwHzn7rWmg
   ``` 
 * Lembre-se de substituir `{token}` pelo token real que você obteve do login.
 
