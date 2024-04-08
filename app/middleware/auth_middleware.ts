@@ -7,7 +7,7 @@ export default class AuthMiddleware {
   if (await auth.check()) {
     await next()
   } else {
-    throw new Error('Usuário não autenticado')
+    throw new Error(' Unauthenticated user.')
   }
 }
 }
