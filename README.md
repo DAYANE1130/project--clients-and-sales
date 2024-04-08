@@ -12,6 +12,20 @@ registrar clientes, produtos e vendas. As operações são realizadas em um banc
 * Lucid versão "^20.1.0" - ORM  para auxiliar na administração do banco de dados
 * JWT(JSON Web Token) - autenticação
 
+## Informações relevantes  prévias à instalação
+
+* Você precisa  garantir que possui Node.js e npm instalados em seu computador. AdonisJS precisa do Node.js >= 20.6.
+
+* Você pode instalar o Node.js usando os instaladores oficiais ou Volta . Volta é um gerenciador de pacotes multiplataforma que instala e executa várias versões do Node.js em seu computador.
+
+* Verifique a versão do Node.js.Copie o código para a área de transferência , basta inserir esse comando no seu terminal e apertar a tecla enter, a saída será similar a do exemplo abaixo indicando qual versão atual do node caso ele exista.
+
+  ```bash
+ node -v
+# v21.0.0
+
+    ```
+
 ## Como Instalar e Rodar o Projeto
 
 1. Clone o repositório do projeto do GitHub:
@@ -20,7 +34,7 @@ registrar clientes, produtos e vendas. As operações são realizadas em um banc
     ```
 2. Navegue até o diretório do projeto e instale as dependências:
     ```bash
-    cd backend-bemobile
+    cd project-clients-and-sales
     npm install
     ```
 3. Configure o arquivo .env com as informações do banco de dados MySQL:
