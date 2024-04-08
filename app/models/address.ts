@@ -3,8 +3,6 @@ import { DateTime } from 'luxon'
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 
-// import { BelongsTo } from '@adonisjs/lucid/types/relations'
-
 export default class Address extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
