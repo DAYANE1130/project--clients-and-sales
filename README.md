@@ -8,7 +8,7 @@ registrar clientes, produtos e vendas. As operações são realizadas em um banc
 
 ## Tecnologias Utilizadas 
 * Adonis.js(Node.js) versão "^6.2.2".
-* Linguagem utilzada Typescript.
+* Linguagem utilizada: Typescript.
 * MySQL - Banco de dados.
 * Lucid versão "^20.1.0" - ORM  para auxiliar na administração do banco de dados.
 * JWT(JSON Web Token) -  para autenticação e autorizar o acesso do usuário a rotas específicas.
