@@ -164,7 +164,7 @@ https://documenter.getpostman.com/view/31041446/2sA35MzzVm
 
 A documentação inclui :
 
-* detalhes sobre os endpoints disponíveis, os parâmetros necessários, os tipos de solicitações suportadas (como GET, POST, PUT,PATCH, DELETE).
+* Detalhes sobre os endpoints disponíveis, os parâmetros necessários, os tipos de solicitações suportadas (como GET, POST, PUT,PATCH, DELETE).
 * Exemplos de solicitações e respostas, autenticação necessária, entre outras informações relevantes.
 * Essa documentação é útil para desenvolvedores que desejam integrar suas aplicações com a API, pois fornece orientações claras e exemplos práticos para facilitar o uso correto da API.
 
