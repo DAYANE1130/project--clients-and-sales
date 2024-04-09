@@ -40,6 +40,7 @@ registrar clientes, produtos e vendas. As operações são realizadas em um banc
 3. Configure o arquivo .env com as informações do banco de dados MySQL:
 
      ```
+    TZ=UTC 
     DB_CONNECTION=mysql
     DB_HOST=seu-host
     DB_PORT=sua-porta
@@ -51,6 +52,7 @@ registrar clientes, produtos e vendas. As operações são realizadas em um banc
 Aqui está um exemplo de como configurar as variavéis de ambiente:     
 
     ```
+    TZ=UTC 
     PORT=3333
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
@@ -89,7 +91,7 @@ Se a autenticação for bem-sucedida, a API retornará um token JWT no seguinte 
 ```
 {
     "type": "bearer",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc5LCJpYXQiOjE3MTI2MTQ1MTF9.SqXgJPZx-WSe0AFIppHOZNuOvbYZi6kNMiwHzn7rWmg"
+    "token": "iOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc5LCJpYXQiOjE3MTI2MTQ1MTF9.SqXgJPZx-WFIppHOZNuOvbYZi6MiwHzn7rWmg"
 }
 ```
 
@@ -119,7 +121,7 @@ Authorization
 * No campo "Value" colocar o token conforme abaixo:
   
   ```
-  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc5LCJpYXQiOjE3MTI6MTQ1MTF9.SqXgJPZx-WSe0AFIppHOZNuOvbYZi6kNMiwHzn7rWmg
+  Bearer iJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjc5LCJpYXQiOjE3MTI6MTQ1MTF9.SqXgJPZx-WSe0AFIppHOZNkNMiwHzn7rWmg
   ``` 
 * Lembre-se de substituir `{token}` pelo token real que você obteve do login.
 
