@@ -147,7 +147,7 @@ Authorization
 - GET `/products/:id`: Detalhar um produto.
 - POST `/products`: Criar um produto.
 - PATCH `/products/:id`: Editar um produto.
-- DELETE `/products/:id`: Exclusão lógica de um produto.
+- DELETE `/products/:id`: Exclusão lógica ("soft delete") de um produto.
 
 ### Vendas (Exige envio de token)
 
