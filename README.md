@@ -3,7 +3,7 @@
 
 ## Descrição
 
-Este projeto Bacbk-end é uma API RESTful desenvolvida com AdonisJS e Lucid ORM . A API permite o cadastro de usuários externos que, ao realizarem login, podem 
+Este projeto Back-end é uma API RESTful desenvolvida com AdonisJS e Lucid ORM . A API permite o cadastro de usuários externos que, ao realizarem login, podem 
 registrar clientes, produtos e vendas. As operações são realizadas em um banco de dados MySQL.
 
 ## Tecnologias Utilizadas 
